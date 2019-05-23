@@ -1,0 +1,1 @@
+INSERT INTO requests (gis_analyst, project_manager, project_priority, date_submitted, due_date, project_name, project_number, latitude, longitude, notes_comments, map_requested, active_archive) VALUES ('Anna Warner', 'Kensey Barker', 2, '2019-05-18', '2019-06-04', 'Project Banana', 1010.25, 37.5759, 77.5410, 'This is a test entry', 'Base Map', 1);
