@@ -1,135 +1,138 @@
-{{!-- <h1>GIS Request</h1>
+{{!-- <header>
+    <button id="login">GIS Login</button>
 
-<h2>Active</h2>
+    <div class="modal fade" id="bit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">GIS LOGIN</h4>
+                </div>
 
-<ul>
-    {{#each requests}}
-    {{#unless active_archive}}
-    {{> requests/request-block active_archive=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <input type="text" id="name-input" placeholder="Username" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4">
+                        <input type="text" id="password-input" placeholder="Password" class="form-control validate">
+                    </div>
+                </div>
 
-<h2>Archive</h2>
+                <div class="modal-footer d-flex justify-content-center">
+                    <input id="genre-submit" class="btn btn-outline-secondary" type="submit">
+                </div>
 
-<ul>
-    {{#each requests}}
-    {{#if active_archive}}
-    {{> requests/request-block active_archive=false}}
-    {{/if}}
-    {{/each}}
-</ul>
-
-<h2>Add a Request</h2>
-<form class="create-request">
-
-    <div class="form-group">
-        <label for="ca">Cat Name:</label>
-        <input type="text" id="ca" name="name">
+            </form>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="sleepy">Sleepy?</label><br>
-        <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-        <input type="radio" name="sleepy" value="0"> Awake
-    </div>
-
-    <button type="submit">Add Cat</button>
-</form> --}}
-
-
-<div class="jumbotron mx-auto" style="width: 960px">
+</header> --}}
+<div class="form-body jumbotron mx-auto" style="width: 960px">
     <div class="container-fluid">
         <form>
             <div class="form-row">
                 <div class="col-md-6 mb-3">
-                    <label for="date-submitted">Date Submitted</label>
-                    <input type="text" class="form-control" id="date-submitted" placeholder="Date Submitted"
-                        value="Today's Date" required>
+                    <label for="date-submitted">Date Submitted: </label>
+                    <input type="text" name="date" id="date">
+                    {{!-- <input id="datepicker" type="date" value="2019-01-01"> --}}
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="due-date">Due Date</label>
-                    <input type="text" class="form-control" id="due-date" placeholder="Due Date" value="Due Date"
-                        required>
+                    <label for="due-date">Due Date: </label>
+                    <input id="due-date" type="date" value="2019-01-01">
                 </div>
             </div>
 
 
+            <div class="admin">
+                <h3>ADMINISTRATIVE INFORMATION</h3>
+                <hr>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="project-manager">Project Manager: </label>
+                        <input type="text" class="form-control mt-1 mb-1" id="project-manager"
+                            placeholder="Project Manager">
+                        <label for="project-name">Project Name: </label>
+                        <input type="text" class="form-control mt-1 mb-3" id="project-name" placeholder="Project Name">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">GIS Analyst</label>
+                            </div>
+                            <select class="analyst custom-select" id="gis-analyst">
+                                <option>Choose...</option>
+                                <option value="1">Anna Warner</option>
+                                <option value="2">Kensey Barker</option>
+                                <option value="3">Roger Tomlinson</option>
+                            </select>
+                        </div>
 
-            <h3>ADMINISTRATIVE INFORMATION</h3>
-            <div class="form-row">
-                <div class="col-md-6">
-                    <label for="project-manager">Project Manager</label>
-                    <input type="text" class="form-control mt-1" id="project-manager" placeholder="Project Manager"
-                        required>
-                    <label for="project-name">Project Name</label>
-                    <input type="text" class="form-control mt-1" id="project-name" placeholder="Project Name" required>
-                    <label for="project-number">Project Number</label>
-                    <input type="text" class="form-control" id="project-number" placeholder="Project Number" required>
-                </div>
-                <div class="col-md-6">
-                    <div class="card border-primary" style="max-width: 18rem;">
-                        <div class="card-header">GIS MANAGER ONLY</div>
-                        <div class="card-body text-primary">
-                            <label for="analyst">Analyst <input type="text" class="form-control" id="analyst"
-                                    placeholder="GIS Analyst"></label>
-                            <label for="priority">Priority <input type="text" class="form-control" id="priority"
-                                    placeholder="Priority"></label>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="project-number">Project Number: </label>
+                        <input type="text" class="form-control mt-1 mb-1" id="project-number"
+                            placeholder="Project Number">
+                        <label for="project-coor">Project Coordinates: </label>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control mt-1" id="lat" placeholder="Latitude">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control mt-1" id="long" placeholder="Longitude">
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect02">Priority</label>
+                            </div>
+                            <select class="priority custom-select" id="priority">
+                                <option>Choose...</option>
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="project-coor">Project Coordinates</label>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control" id="lat" placeholder="Latitude" required>
+            <div class="maps">
+                <h3>MAPS REQUESTED</h3>
+                <hr>
+                <div class="row" id="map-request">
+                    <div class="col-md-6 mb-3">
+                        <div class="custom-control custom-radio">
+                            <div>
+                                <label><input type="radio" name="map" value="Base Map"> Base Map</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="map" value="Impact"> Impact</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="map" value="Loc/Vic/Aerial"> Loc/Vic/Aerial</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="map" value="Delineation"> Delineation</label>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <input type="text" class="form-control" id="long" placeholder="Longitude" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="custom-control custom-radio">
+                            <div>
+                                <label><input type="radio" name="map" value="EnS"> EnS</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="map" value="Soils"> Soils</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="map" value="FEMA"> FEMA</label>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="map" value="Enter In Own"> Enter</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <h3>MAPS REQUESTED</h3>
-            <div class="row" id="map-request">
-                <div class="col-md-6 mb-3">
-                    <div class="custom-control custom-radio">
-                        <div>
-                            <label><input type="radio" name="map" value="Base Map"> Base Map</label>
-                        </div>
-                        <div>
-                            <label><input type="radio" name="map" value="Impact"> Impact</label>
-                        </div>
-                        <div>
-                            <label><input type="radio" name="map" value="Loc/Vic/Aerial"> Loc/Vic/Aerial</label>
-                        </div>
-                        <div>
-                            <label><input type="radio" name="map" value="Delineation"> Delineation</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="custom-control custom-radio">
-                        <div>
-                            <label><input type="radio" name="map" value="EnS"> EnS</label>
-                        </div>
-                        <div>
-                            <label><input type="radio" name="map" value="Soils"> Soils</label>
-                        </div>
-                        <div>
-                            <label><input type="radio" name="map" value="FEMA"> FEMA</label>
-                        </div>
-                        <div>
-                            <label><input type="radio" name="map" value="Enter In Own"> Enter</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="form-group">
                 <label for="notes_comments">Notes/Comments</label>

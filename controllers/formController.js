@@ -15,6 +15,22 @@ router.get("/", function (req, res) {
     });
 });
 
+
+router.get("/sheet", function (req, res) {
+    request.all(function (data) {
+        var hbsObject = {
+            requests: data
+        };
+        console.log(hbsObject);
+        res.render("sheet", hbsObject);
+    });
+});
+
+router.post("/login", function (req, res) {
+
+    res.json("ok");
+});
+
 router.post("/api/requests", function (req, res) {
     request.create([
         "gis_analyst", "project_manager", "project_priority", "date_submitted", "due_date", "project_name", "project_number", "latitude", "longitude", "notes_comments", "map_requested", "active_archive"

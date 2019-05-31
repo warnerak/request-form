@@ -1,32 +1,52 @@
-$(function () {
-    //     $(".change-active").on("click", function (event) {
-    //         var id = $(this).data("id");
-    //         var activeState = $(this).data("activearchive");
+var isToday = require('date-fns/is_today')
 
-    //         var newActiveState = {
-    //             active_archive: activeState
-    //         };
-    //         $.ajax("/api/requests/" + id, {
-    //             type: "PUT",
-    //             data: newActiveState
-    //         }).then(
-    //             function () {
-    //                 console.log("changed active state to: ", activeState);
-    //                 location.reload();
-    //             }
-    //         );
-    //     });
+$(function () {
+
+    $("#priority-link").on("click", function (event) {
+        event.preventDefault();
+        console.log("i am in function")
+        $.ajax("/sheet", {
+            type: "POST",
+            data: newRequest
+        }).then(
+            function () {
+                console.log("everything is okay")
+                window.location.replace("sheets");
+            }
+
+        );
+
+    });
+
+
 
     $("#submit-request").on("click", function (event) {
         event.preventDefault();
         console.log("i have hit the submit button");
         var mapRequest = $("input[name='map']:checked").val();
+
+
+        // var dateSubmittedRequest = $('input[id$=date-submitted]').datepicker({
+        //     dateFormat: 'yyyy-mm-dd'
+        // });
+        var date = dateFns.format(new Date(2014, 1, 11), 'MM/DD/YYYY')
+        console.log(date)
+
+
+        // var dueDateRequest = $('input[type="due-date"]').val();
+        // console.log($("#due-date"));
+
+
+        var analystRequest = $(".analyst").children("option:selected").text();
+        console.log(analystRequest);
+        var priorityRequest = $(".priority").children("option:selected").text();
+        console.log(priorityRequest);
         var newRequest = {
-            gis_analyst: $("#analyst").val().trim(),
+            gis_analyst: analystRequest,
             project_manager: $("#project-manager").val().trim(),
-            project_priority: parseInt($("#priority").val()),
-            date_submitted: $("#date-submitted").val().trim(),
-            due_date: $("#due-date").val().trim(),
+            project_priority: priorityRequest,
+            date_submitted: dateSubmittedRequest,
+            due_date: dueDateRequest,
             project_name: $("#project-name").val().trim(),
             project_number: parseFloat($("#project-number").val()).toFixed(2),
             latitude: parseFloat($("#lat").val()).toFixed(6),
@@ -47,19 +67,5 @@ $(function () {
         );
     });
 
-    // $(".delete-cat").on("click", function(event) {
-    //   var id = $(this).data("id");
-
-    //   // Send the DELETE request.
-    //   $.ajax("/api/cats/" + id, {
-    //     type: "DELETE"
-    //   }).then(
-    //     function() {
-    //       console.log("deleted cat", id);
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-    // });
 
 });

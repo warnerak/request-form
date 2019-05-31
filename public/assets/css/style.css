@@ -1,0 +1,55 @@
+.body {
+    background-color: grey;
+}
+
+.form-body {
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.admin {
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+
+.manager {
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+
+.maps {
+    margin-top: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+
+table, th, tr, td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+
+#side-bar {
+    background-color: white;
+    border: 1px solid black;
+}
+
+#side-nav {
+    position: fixed;
+    
+}
+
+.nav-item {
+    margin: 5px;
+    text-align: center;
+}
+
+#title-block {
+    border-bottom: 3px solid black;
+    font-display: bold;
+}

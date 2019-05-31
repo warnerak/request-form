@@ -1,0 +1,49 @@
+<div class="form-body jumbotron mx-auto p-0 m-0">
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading panel-custom">
+                Active Schedule
+            </div>
+            <table class="table table-hover">
+                <tr>
+                    <th scope="col">Analyst</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">P.M.</th>
+                    <th scope="col">Pr. Name</th>
+                    <th scope="col">Pr. Number</th>
+                    <th scope="col">Map</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Coordinates</th>
+                    <th scope="col">Notes</th>
+                    <th scope="col">Active</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each requests}}
+                    {{#unless archived}}
+                    <tr>
+                        <td class="row_col">{{gis_analyst}}</td>
+                        <td class="row_col">{{project_priority}}</td>
+                        <td class="row_col">{{project_manager}}</td>
+                        <td class="row_col">{{project_name}}</td>
+                        <td class="row_col">{{project_number}}</td>
+                        <td class="row_col">{{map_requested}}</td>
+                        <td class="row_col">{{due_date}}</td>
+                        <td class="row_col" id="coordinates">{{latitude}} , {{longitude}}</td>
+                        <td class="row_col">{{notes_comments}}</td>
+                        <div class="form-group">
+                            <input type="radio" name="active" value="1" checked> Active<br>
+                            <input type="radio" name="active" value="0"> Archived
+                        </div>
+                        <td class="row_col">{{active_archive}}</td>
+                    </tr>
+                    {{/unless}}
+                    {{/each}}
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>

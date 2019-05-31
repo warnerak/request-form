@@ -8,7 +8,7 @@ CREATE TABLE requests
 	id int NOT NULL AUTO_INCREMENT,
     gis_analyst varchar (255),
 	project_manager varchar (255) NOT NULL,
-    project_priority NUMERIC,
+    project_priority varchar (10),
     date_submitted DATE,
     due_date DATE,
     project_name varchar(255) NOT NULL,
