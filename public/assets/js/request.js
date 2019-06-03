@@ -1,20 +1,6 @@
 
 $(function () {
 
-    $("#priority-link").on("click", function (event) {
-        event.preventDefault();
-        console.log("i am in active function")
-        $.ajax("/sheet", {
-            type: "GET",
-        }).then(
-            function () {
-                window.open("sheet", "_blank");
-            }
-
-        );
-
-    });
-
 
     $("#submit-request").on("click", function (event) {
         event.preventDefault();
@@ -52,22 +38,54 @@ $(function () {
         );
     });
 
-    $("#archived-link").on("click", function (event) {
+    $("#priority-link").on("click", function (event) {
         event.preventDefault();
-        console.log("i am in archived function")
-        window.open.replace("archived")
-        // window.location.replace("archived");
-        $.ajax("/archived", {
-            type: "POST",
-            data: newRequest
+        console.log("i am in active function")
+        $.ajax("/sheet", {
+            type: "GET",
         }).then(
             function () {
-                console.log("everything is okay")
-                window.location.replace("archived");
+                window.open("sheet", "_blank");
+            }
+
+        );
+    });
+
+
+    $("#archived-link").on("click", function (event) {
+        event.preventDefault();
+        console.log("i am in active function")
+        $.ajax("/archived", {
+            type: "GET",
+        }).then(
+            function () {
+                window.open("archived", "_blank");
             }
 
         );
 
+    });
+
+    $(".change-status").on("click", function (event) {
+        console.log("change-status function clicked")
+        var id = $(this).data("id");
+        var newStatus = $(this).data("newStatus");
+
+        var newStatusState = {
+            archived: newStatus
+        };
+
+        // Send the PUT request.
+        $.ajax("/api/requests/" + id, {
+            type: "PUT",
+            data: newStatusState
+        }).then(
+            function () {
+                console.log("changed status to", newStatus);
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
     });
 
 

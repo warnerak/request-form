@@ -19,21 +19,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="row_col">{{gis_analyst}}</td>
-                        <td class="row_col">{{project_priority}}</td>
-                        <td class="row_col">{{project_manager}}</td>
-                        <td class="row_col">{{project_name}}</td>
-                        <td class="row_col">{{project_number}}</td>
-                        <td class="row_col">{{map_requested}}</td>
-                        <td class="row_col">{{due_date}}</td>
-                        <td class="row_col" id="coordinates">{{latitude}} , {{longitude}}</td>
-                        <td class="row_col">{{notes_comments}}</td>
-                        <td class="row_col">{{active_archive}}
-                        </td>
-                    </tr>
 
-                    {{!-- {{#each active}}
+                    {{#each requests}}
                     {{#unless archived}}
                     <tr>
                         <td class="row_col">{{gis_analyst}}</td>
@@ -45,19 +32,16 @@
                         <td class="row_col">{{due_date}}</td>
                         <td class="row_col" id="coordinates">{{latitude}} , {{longitude}}</td>
                         <td class="row_col">{{notes_comments}}</td>
-                        <td class="row_col">{{active_archive}}
-
+                        <td class="row_col">
                             <button class="change-status" data-id="{{id}}" data-newstatus="{{archived}}">
                                 {{#if active}}ACTIVE{{else}}ARCHIVE{{/if}}
                             </button>
                         </td>
                     </tr>
 
-                    {{!-- {{> active-block}} --}}
 
-
-                    {{!-- {{/unless}}
-                    {{/each}} --}}
+                    {{/unless}}
+                    {{/each}}
 
                 </tbody>
             </table>
