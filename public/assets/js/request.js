@@ -45,7 +45,7 @@ $(function () {
             type: "GET",
         }).then(
             function () {
-                window.open("sheet", "_blank");
+                window.location.replace("sheet");
             }
 
         );
@@ -59,7 +59,7 @@ $(function () {
             type: "GET",
         }).then(
             function () {
-                window.open("archived", "_blank");
+                window.location.replace("archived");
             }
 
         );
@@ -72,8 +72,9 @@ $(function () {
         var newStatus = $(this).data("newStatus");
 
         var newStatusState = {
-            archived: newStatus
+            active_archive: false
         };
+        console.log(newStatusState);
 
         // Send the PUT request.
         $.ajax("/api/requests/" + id, {
@@ -82,6 +83,23 @@ $(function () {
         }).then(
             function () {
                 console.log("changed status to", newStatus);
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
+    $(".delete-request").on("click", function (event) {
+        console.log("delete-request function clicked")
+        var id = $(this).data("id");
+        console.log(id);
+
+        // Send the DELETE request.
+        $.ajax("/api/requests/" + id, {
+            type: "DELETE"
+        }).then(
+            function () {
+                console.log("deleted request", id);
                 // Reload the page to get the updated list
                 location.reload();
             }

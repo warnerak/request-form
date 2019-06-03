@@ -15,27 +15,18 @@
                     <th scope="col">Due Date</th>
                     <th scope="col">Coordinates</th>
                     <th scope="col">Notes</th>
-                    <th scope="col">Active</th>
+                    <th scope="col">Status</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="row_col">{{gis_analyst}}</td>
-                        <td class="row_col">{{project_priority}}</td>
-                        <td class="row_col">{{project_manager}}</td>
-                        <td class="row_col">{{project_name}}</td>
-                        <td class="row_col">{{project_number}}</td>
-                        <td class="row_col">{{map_requested}}</td>
-                        <td class="row_col">{{due_date}}</td>
-                        <td class="row_col" id="coordinates">{{latitude}} , {{longitude}}</td>
-                        <td class="row_col">{{notes_comments}}</td>
-                        <td class="row_col">{{active_archive}}
+                    {{#each requests}}
+                    {{#unless active_archive}}
 
-                            <button class="change-status" data-id="{{id}}" data-newstatus="{{archived}}">
-                                {{#if active}}ACTIVE{{else}}ARCHIVE{{/if}}
-                            </button>
-                        </td>
-                    </tr>
+                    {{> status/delete-block active=false}}
+
+                    {{/unless}}
+                    {{/each}}
+
 
                 </tbody>
             </table>
