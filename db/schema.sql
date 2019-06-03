@@ -17,6 +17,6 @@ CREATE TABLE requests
     longitude NUMERIC (10, 6) NOT NULL,
     notes_comments varchar (500),
     map_requested varchar (255) NOT NULL,
-    active_archive BOOLEAN,
+    active_archive BOOLEAN DEFAULT TRUE,
 	PRIMARY KEY (id)
 );
