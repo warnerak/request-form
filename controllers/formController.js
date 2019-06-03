@@ -10,7 +10,7 @@ router.get("/", function (req, res) {
         var hbsObject = {
             requests: data
         };
-        console.log(hbsObject);
+        console.log("in the index function", hbsObject);
         res.render("index", hbsObject);
     });
 });
@@ -21,7 +21,7 @@ router.get("/sheet", function (req, res) {
         var hbsObject = {
             requests: data
         };
-        console.log(hbsObject);
+        console.log("in the sheet function", hbsObject);
         res.render("sheet", hbsObject);
     });
 });
@@ -36,15 +36,6 @@ router.get("/archived", function (req, res) {
     });
 });
 
-router.post("/api/requests", function (req, res) {
-    request.create([
-        "gis_analyst", "project_manager", "project_priority", "date_submitted", "due_date", "project_name", "project_number", "latitude", "longitude", "notes_comments", "map_requested", "active_archive"
-    ], [
-            req.body.gis_analyst, req.body.project_manager, req.body.project_priority, req.body.date_submitted, req.body.due_date, req.body.project_name, req.body.project_number, req.body.latitude, req.body.longitude, req.body.notes_comments, req.body.map_requested, req.body.active_archive
-        ], function (result) {
-            res.json({ id: result.insertId });
-        });
-});
 
 router.post("/api/requests", function (req, res) {
     request.create([
@@ -56,21 +47,21 @@ router.post("/api/requests", function (req, res) {
         });
 });
 
-// router.put("/api/requests/:project_number", function (req, res) {
-//     var condition = "Project Number = " + req.params.project_number;
+router.put("/api/requests/:project_number", function (req, res) {
+    var condition = "Project Number = " + req.params.project_number;
 
-//     console.log("condition", condition);
+    console.log("condition", condition);
 
-//     request.update({
-//         active_archive: req.body.active_archive
-//     }, condition, function (result) {
-//         if (result.changedRows == 0) {
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
+    request.update({
+        active_archive: req.body.active_archive
+    }, condition, function (result) {
+        if (result.changedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
 
 router.delete("/api/requests/:project_number", function (req, res) {
     var condition = "Project Number = " + req.params.project_number;

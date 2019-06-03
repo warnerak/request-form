@@ -5,12 +5,10 @@ $(function () {
         event.preventDefault();
         console.log("i am in active function")
         $.ajax("/sheet", {
-            type: "POST",
-            data: newRequest
+            type: "GET",
         }).then(
             function () {
-                console.log("everything is okay")
-                window.location.replace("sheet");
+                window.open("sheet", "_blank");
             }
 
         );
@@ -57,6 +55,8 @@ $(function () {
     $("#archived-link").on("click", function (event) {
         event.preventDefault();
         console.log("i am in archived function")
+        window.open.replace("archived")
+        // window.location.replace("archived");
         $.ajax("/archived", {
             type: "POST",
             data: newRequest
