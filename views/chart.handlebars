@@ -1,6 +1,21 @@
 <div class="form-body jumbotron mx-auto p-0 m-0">
-    <div class="container-fluid">
+    <div class="chart-con container-fluid">
         <h2>Productivity Chart</h2>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">GIS Analyst</label>
+            </div>
+            <select class="analyst custom-select" id="analyst-chart">
+                <option>Choose...</option>
+                <option value="1">Anna Warner</option>
+                <option value="2">Kensey Barker</option>
+                <option value="3">Roger Tomlinson</option>
+            </select>
+            <button class="btn btn-primary" id="analyst-submit" type="submit">Submit</button>
+
+
+        </div>
+
 
         {{!-- CHART MODAL --}}
         {{!-- <div id="chart-modal" class="modal">
@@ -15,40 +30,46 @@
 <script>
 
 
-    var ctx = document.getElementById('chart-display');
-    new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
-
-        // The data for our dataset
-        data: {
-            labels: ['Active Projects'],
-            datasets: [{
-                label: 'High',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [4]
-            },
-            {
-                label: 'Medium',
-                backgroundColor: 'rgb(255, 255, 0)',
-                borderColor: 'rgb(255, 255, 0)',
-                data: [4]
-            },
-            {
-                label: 'Low',
-                backgroundColor: 'rgb(0, 204, 0)',
-                borderColor: 'rgb(0, 204, 0)',
-                data: [4]
-            }
-
-            ]
-
-        },
-
-        // Configuration options go here
-        options: {}
+    $("#analyst-submit").on("click", function (event) {
+        event.preventDefault();
+        console.log("btn been hit")
+        var analystRequest = $("#analyst-chart").children("option:selected").text();
+        console.log(analystRequest);
+        if (analystRequest === "Anna Warner") {
+            var dataArr = [3, 4, 7]
+        } else if (analystRequest === "Kensey Barker") {
+            var dataArr = [7, 5, 3]
+        } else if (analystRequest === "Roger Tomlinson") {
+            var dataArr = [3, 7, 5]
+        };
+        console.log(dataArr);
+        checkChart(dataArr);
     });
+
+
+
+
+    function checkChart(dataInput) {
+        var data = {
+            datasets: [{
+                data: dataInput,
+                backgroundColor: ["rgb(255, 0, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)"]
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'High',
+                'Low',
+                'Medium'
+            ]
+        };
+        var ctx = document.getElementById('chart-display');
+        new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: Chart.defaults.pie
+        });
+    };
 
 
 

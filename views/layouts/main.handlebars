@@ -19,27 +19,17 @@
 </head>
 
 <body class="body" style="font-family:'garamond">
-    <nav class="navbar navbar-light bg-light p-3 sticky-top" id="title-block">
+    <nav class="navbar navbar-light p-3 sticky-top" id="title-block">
         <span class="navbar-brand mb-0">
             <h1>GIS DEPARTMENT</h1>
         </span>
     </nav>
     <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar" id="side-bar">
-            <ul class="nav nav-pills flex-column" id="side-nav">
-                <li class="nav-item">
-                    <a class="nav-link" id="request-link" href="/">GIS REQUEST FORM</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="priority-link" href="/sheet">ACTIVE PRIORITY LIST</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="archived-link" href="/archived">ARCHIVED PRIORITY LIST</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="chart-link" href="/chart">PRODUCTIVITY CHART</a>
-                </li>
-            </ul>
+            <a class="nav-link" id="request-link" href="/">GIS REQUEST FORM</a>
+            <a class="nav-link" id="priority-link" href="/sheet">ACTIVE PRIORITY LIST</a>
+            <a class="nav-link" id="archived-link" href="/archived">ARCHIVED PRIORITY LIST</a>
+            <a class="nav-link" id="chart-link" href="/chart">PRODUCTIVITY CHART</a>
         </nav>
         <script>
             var pathname = location.pathname;
@@ -48,14 +38,14 @@
         <main class="col-sm-9 col-md-10 pt-3" id="body-id">
             {{{ body }}}
         </main>
-    </div>
 
-    <footer class="footer mt-auto py-3 bg-light">
+    </div>
+    <footer class="footer mt-auto py-3">
         <div class="container">
             <a href="https://github.com/warnerak/request-form" target="_blank">GitHub</a>
-            <span class="text-muted">Place sticky footer content here.</span>
         </div>
     </footer>
+
 
 
 </body>

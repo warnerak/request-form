@@ -33,28 +33,66 @@ table, tr, th, td {
     text-align: center;
   }
 
-#side-bar {
-    background-color: white;
-    border: 1px solid black;
-    
-    
-}
-
-#side-nav {
-    position: fixed;  
-   
-}
-
-.nav-item {
-    margin: 2px;
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #167826;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
     text-align: center;
-}
+    font-display: black;
+    border-right: 2px solid black;
+  }
+.active {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+  a {
+      color: black;
+  }
+  
+
+  
+
+@media screen and (max-width: 700px) {
+    #sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    #sidebar a {float: left;}
+    #body-id {margin-left: 0;}
+  }
+  
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+  @media screen and (max-width: 400px) {
+    #sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+  #body-id {
+    margin-left: 200px;
+    padding: 1px;
+    height: 1000px;
+  }
 
 #title-block {
     border-bottom: 3px solid black;
     font-display: bold;
+    background-color: #167826;
 }
 
 .footer{
     border-top: 3px solid black;
+    background-color: #167826,
+}
+
+.chart-con {
+    padding-left: 150px;
 }
