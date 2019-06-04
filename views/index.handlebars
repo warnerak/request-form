@@ -1,42 +1,15 @@
-{{!-- <header>
-    <button id="login">GIS Login</button>
-
-    <div class="modal fade" id="bit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">GIS LOGIN</h4>
-                </div>
-
-                <div class="modal-body mx-3">
-                    <div class="md-form mb-5">
-                        <input type="text" id="name-input" placeholder="Username" class="form-control validate">
-                    </div>
-                    <div class="md-form mb-4">
-                        <input type="text" id="password-input" placeholder="Password" class="form-control validate">
-                    </div>
-                </div>
-
-                <div class="modal-footer d-flex justify-content-center">
-                    <input id="genre-submit" class="btn btn-outline-secondary" type="submit">
-                </div>
-
-            </form>
-        </div>
-    </div>
-</header> --}}
 <div class="form-body jumbotron mx-auto" style="width: 960px">
     <div class="container-fluid">
+
         <form>
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <label for="date-submitted">Date Submitted: </label>
-                    <input id="date-submitted" type="date" value="2019-06-03">
+                    <input id="date-submitted" type="date" value="2019-06-03" required="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="due-date">Due Date: </label>
-                    <input id="due-date" type="date" value="2019-06-04">
+                    <input id="due-date" type="date" value="2019-06-04" required="">
                 </div>
             </div>
 
@@ -48,7 +21,7 @@
                     <div class="col-md-6">
                         <label for="project-manager">Project Manager: </label>
                         <input type="text" class="form-control mt-1 mb-1" id="project-manager"
-                            placeholder="Project Manager">
+                            placeholder="Project Manager" required="">
                         <label for="project-name">Project Name: </label>
                         <input type="text" class="form-control mt-1 mb-3" id="project-name" placeholder="Project Name">
                         <div class="input-group mb-3">
@@ -67,14 +40,16 @@
                     <div class="col-md-6">
                         <label for="project-number">Project Number: </label>
                         <input type="text" class="form-control mt-1 mb-1" id="project-number"
-                            placeholder="Project Number">
+                            placeholder="Project Number" required="">
                         <label for="project-coor">Project Coordinates: </label>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control mt-1" id="lat" placeholder="Latitude">
+                                <input type="text" class="form-control mt-1" id="lat" placeholder="Latitude"
+                                    required="">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control mt-1" id="long" placeholder="Longitude">
+                                <input type="text" class="form-control mt-1" id="long" placeholder="Longitude"
+                                    required="">
                             </div>
                         </div>
                         <div class="input-group mb-3">
@@ -138,6 +113,7 @@
                 <textarea class="form-control" id="notes_comments" rows="5"></textarea>
             </div>
             <button class="btn btn-primary" id="submit-request" type="submit">Submit form</button>
+            {{!-- <button class="btn btn-primary" id="pdf-form" type="submit">Export PDF</button> --}}
         </form>
 
     </div>

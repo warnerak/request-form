@@ -66,6 +66,22 @@ $(function () {
 
     });
 
+    $("#chart-link").on("click", function (event) {
+        event.preventDefault();
+        console.log("i am in chart function")
+        $.ajax("/chart", {
+            type: "GET",
+        }).then(
+            function () {
+                window.location.replace("chart");
+
+            }
+
+        );
+    });
+
+
+
     $(".change-status").on("click", function (event) {
         console.log("change-status function clicked")
         var id = $(this).data("id");
@@ -83,23 +99,6 @@ $(function () {
         }).then(
             function () {
                 console.log("changed status to", newStatus);
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-    });
-
-    $(".delete-request").on("click", function (event) {
-        console.log("delete-request function clicked")
-        var id = $(this).data("id");
-        console.log(id);
-
-        // Send the DELETE request.
-        $.ajax("/api/requests/" + id, {
-            type: "DELETE"
-        }).then(
-            function () {
-                console.log("deleted request", id);
                 // Reload the page to get the updated list
                 location.reload();
             }

@@ -51,3 +51,7 @@ table, tr, th, td {
     border-bottom: 3px solid black;
     font-display: bold;
 }
+
+.footer{
+    border-top: 3px solid black;
+}

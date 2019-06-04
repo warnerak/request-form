@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 
+
 var request = require("../models/form.js");
 
 // Create all our routes and set up logic within those routes where required.
@@ -31,10 +32,21 @@ router.get("/archived", function (req, res) {
         var hbsObject = {
             requests: data
         };
-        console.log("in the sheet function", hbsObject);
+        console.log("in the archive function", hbsObject);
         res.render("archived", hbsObject);
     });
 });
+
+router.get("/chart", function (req, res) {
+    request.all(function (data) {
+        var hbsObject = {
+            requests: data
+        };
+        console.log("in the chart function", hbsObject);
+        res.render("chart", hbsObject);
+    });
+});
+
 
 
 router.post("/api/requests", function (req, res) {
@@ -76,5 +88,6 @@ router.delete("/api/requests/:id", function (req, res) {
         }
     });
 });
+
 
 module.exports = router;

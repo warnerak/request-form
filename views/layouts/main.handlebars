@@ -9,8 +9,13 @@
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js?"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0" defer></script>
     <script src="/assets/js/request.js"></script>
+
 </head>
 
 <body class="body" style="font-family:'garamond">
@@ -31,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" id="archived-link" href="/archived">ARCHIVED PRIORITY LIST</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="chart-link" href="/chart">PRODUCTIVITY CHART</a>
+                </li>
             </ul>
         </nav>
         <script>
@@ -41,6 +49,14 @@
             {{{ body }}}
         </main>
     </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <a href="https://github.com/warnerak/request-form" target="_blank">GitHub</a>
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
+
 
 </body>
 
