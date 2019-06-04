@@ -36,15 +36,17 @@ table, tr, th, td {
 #side-bar {
     background-color: white;
     border: 1px solid black;
-    padding: 2px;
+    
+    
 }
 
 #side-nav {
-    position: fixed;    
+    position: fixed;  
+   
 }
 
 .nav-item {
-    margin: 5px;
+    margin: 2px;
     text-align: center;
 }
 
