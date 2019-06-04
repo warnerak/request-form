@@ -33,7 +33,7 @@ $(function () {
         }).then(
             function () {
                 console.log("created new request");
-                // location.reload();
+                location.reload();
             }
         );
     });
@@ -99,6 +99,21 @@ $(function () {
         }).then(
             function () {
                 console.log("changed status to", newStatus);
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
+    $(".delete-request").on("click", function (event) {
+        var id = $(this).data("id");
+
+        // Send the DELETE request.
+        $.ajax("/api/requests/" + id, {
+            type: "DELETE"
+        }).then(
+            function () {
+                console.log("deleted request", id);
                 // Reload the page to get the updated list
                 location.reload();
             }
